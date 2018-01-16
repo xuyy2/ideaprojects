@@ -3,12 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <title>书籍管理系统</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/base.css">
 </head>
 <body>
-<%@ include file="WEB-INF/jsp/common/head.jsp" %>
+<%@ include file="WEB-INF/view/header.jsp" %>
 
 <div class="main w clearfix">
     <div class="main-left">
@@ -54,56 +54,56 @@
 
                 </ul>
 
-                <%--分页导航--%>
-                <nav class="col-md-10 col-md-offset-2">
-                    <ul class="pagination pagination-sm">
-                        <%--首页--%>
-                        <li><a href="listPostByTime.do?curPage=1">首页</a></li>
-                        <%--上一页--%>
-                        <c:choose>
-                            <c:when test="${pageBean.curPage!=1 }">
-                                <li><a href="listPostByTime.do?curPage=${pageBean.curPage-1 }"><span>&laquo;</span></a></li>
-                            </c:when>
-                            <c:otherwise>
-                                <li><span>&laquo;</span></li>
-                            </c:otherwise>
-                        </c:choose>
-                        <%--中间部分--%>
-                        <c:choose>
-                            <c:when test="${pageBean.allPage<=10 }">
-                                <c:forEach begin="1" end="${ pageBean.allPage}" var="i">
-                                    <li class="pageNum"><a href="listPostByTime.do?curPage=${i }">${i }</a></li>
-                                </c:forEach>
-                            </c:when>
-                            <c:when test="${pageBean.curPage<=5 }">
-                                <c:forEach begin="1" end="10" var="i">
-                                    <li class="pageNum"><a href="listPostByTime.do?curPage=${i }">${i }</a></li>
-                                </c:forEach>
-                            </c:when>
-                            <c:when test="${pageBean.allPage-pageBean.curPage<5 }">
-                                <c:forEach begin="${pageBean.allPage-9 }" end="${ pageBean.allPage}" var="i">
-                                    <li class="pageNum"><a href="listPostByTime.do?curPage=${i }">${i }</a></li>
-                                </c:forEach>
-                            </c:when>
-                            <c:otherwise>
-                                <c:forEach begin="${pageBean.curPage-4 }" end="${ pageBean.curPage+5}" var="i">
-                                    <li class="pageNum"><a href="listPostByTime.do?curPage=${i }">${i }</a></li>
-                                </c:forEach>
-                            </c:otherwise>
-                        </c:choose>
-                        <%--下一页--%>
-                        <c:choose>
-                            <c:when test="${pageBean.curPage!=pageBean.allPage }">
-                                <li><a href="listPostByTime.do?curPage=${pageBean.curPage+1 }"><span>&raquo;</span></a></li>
-                            </c:when>
-                            <c:otherwise>
-                                <li><span>&raquo;</span></li>
-                            </c:otherwise>
-                        </c:choose>
-                        <%--尾页--%>
-                        <li><a href="listPostByTime.do?curPage=${pageBean.allPage}">尾页</a></li>
-                    </ul>
-                </nav>
+                <%--&lt;%&ndash;分页导航&ndash;%&gt;--%>
+                <%--<nav class="col-md-10 col-md-offset-2">--%>
+                    <%--<ul class="pagination pagination-sm">--%>
+                        <%--&lt;%&ndash;首页&ndash;%&gt;--%>
+                        <%--<li><a href="listPostByTime.do?curPage=1">首页</a></li>--%>
+                        <%--&lt;%&ndash;上一页&ndash;%&gt;--%>
+                        <%--<c:choose>--%>
+                            <%--<c:when test="${pageBean.curPage!=1 }">--%>
+                                <%--<li><a href="listPostByTime.do?curPage=${pageBean.curPage-1 }"><span>&laquo;</span></a></li>--%>
+                            <%--</c:when>--%>
+                            <%--<c:otherwise>--%>
+                                <%--<li><span>&laquo;</span></li>--%>
+                            <%--</c:otherwise>--%>
+                        <%--</c:choose>--%>
+                        <%--&lt;%&ndash;中间部分&ndash;%&gt;--%>
+                        <%--<c:choose>--%>
+                            <%--<c:when test="${pageBean.allPage<=10 }">--%>
+                                <%--<c:forEach begin="1" end="${ pageBean.allPage}" var="i">--%>
+                                    <%--<li class="pageNum"><a href="listPostByTime.do?curPage=${i }">${i }</a></li>--%>
+                                <%--</c:forEach>--%>
+                            <%--</c:when>--%>
+                            <%--<c:when test="${pageBean.curPage<=5 }">--%>
+                                <%--&lt;%&ndash;<c:forEach begin="1" end="10" var="i">&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<li class="pageNum"><a href="listPostByTime.do?curPage=${i }">${i }</a></li>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;</c:forEach>&ndash;%&gt;--%>
+                            <%--</c:when>--%>
+                            <%--<c:when test="${pageBean.allPage-pageBean.curPage<5 }">--%>
+                                <%--<c:forEach begin="${pageBean.allPage-9 }" end="${ pageBean.allPage}" var="i">--%>
+                                    <%--<li class="pageNum"><a href="listPostByTime.do?curPage=${i }">${i }</a></li>--%>
+                                <%--</c:forEach>--%>
+                            <%--</c:when>--%>
+                            <%--<c:otherwise>--%>
+                                <%--<c:forEach begin="${pageBean.curPage-4 }" end="${ pageBean.curPage+5}" var="i">--%>
+                                    <%--<li class="pageNum"><a href="listPostByTime.do?curPage=${i }">${i }</a></li>--%>
+                                <%--</c:forEach>--%>
+                            <%--</c:otherwise>--%>
+                        <%--</c:choose>--%>
+                        <%--&lt;%&ndash;下一页&ndash;%&gt;--%>
+                        <%--<c:choose>--%>
+                            <%--<c:when test="${pageBean.curPage!=pageBean.allPage }">--%>
+                                <%--<li><a href="listPostByTime.do?curPage=${pageBean.curPage+1 }"><span>&raquo;</span></a></li>--%>
+                            <%--</c:when>--%>
+                            <%--<c:otherwise>--%>
+                                <%--<li><span>&raquo;</span></li>--%>
+                            <%--</c:otherwise>--%>
+                        <%--</c:choose>--%>
+                        <%--&lt;%&ndash;尾页&ndash;%&gt;--%>
+                        <%--<li><a href="listPostByTime.do?curPage=${pageBean.allPage}">尾页</a></li>--%>
+                    <%--</ul>--%>
+                <%--</nav>--%>
 
             </div>
         </div>
@@ -137,7 +137,7 @@
     </div>
 </div>
 
-<%@ include file="WEB-INF/jsp/common/bootstrap.jsp" %>
+<%@ include file="WEB-INF/view/footer.jsp" %>
 <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="js/base.js"></script>
 <script type="text/javascript">
