@@ -12,10 +12,10 @@ import com.cn.pojo.User;
 public class UserServiceImpl implements IUserService{
 
     @Resource
-    private IUserDao userDao;
+    private IUserDao  userDao;
     @Override
-    public User getUserById(int id) {
-        return userDao.findUserById(id);
+    public User getUserById(int id){
+        return userDao.selectByPrimaryKey(id);
     }
 
 }
