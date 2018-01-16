@@ -1,2 +1,0 @@
-# ideaproject
-idea projects 
