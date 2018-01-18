@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.BusinessTripMapper" >
+  <resultMap id="BaseResultMap" type="com.model.BusinessTrip" >
+    <id column="bt_sequence_no" property="btSequenceNo" jdbcType="INTEGER" />
+    <result column="bt_approve_no" property="btApproveNo" jdbcType="VARCHAR" />
+    <result column="bt_title" property="btTitle" jdbcType="VARCHAR" />
+    <result column="bt_approve_state" property="btApproveState" jdbcType="VARCHAR" />
+    <result column="bt_approve_result" property="btApproveResult" jdbcType="VARCHAR" />
+    <result column="bt_approve_begin" property="btApproveBegin" jdbcType="VARCHAR" />
+    <result column="bt_approve_end" property="btApproveEnd" jdbcType="VARCHAR" />
+    <result column="bt_ask_staff_id" property="btAskStaffId" jdbcType="VARCHAR" />
+    <result column="bt_ask_staff_name" property="btAskStaffName" jdbcType="VARCHAR" />
+    <result column="bt_ask_staff_depart" property="btAskStaffDepart" jdbcType="VARCHAR" />
+    <result column="bt_history_approve_name" property="btHistoryApproveName" jdbcType="VARCHAR" />
+    <result column="bt_approve_record" property="btApproveRecord" jdbcType="VARCHAR" />
+    <result column="bt_now_approve_name" property="btNowApproveName" jdbcType="VARCHAR" />
+    <result column="bt_cost" property="btCost" jdbcType="VARCHAR" />
+    <result column="bt_detail" property="btDetail" jdbcType="VARCHAR" />
+    <result column="bt_aim" property="btAim" jdbcType="VARCHAR" />
+    <result column="bt_start_city" property="btStartCity" jdbcType="VARCHAR" />
+    <result column="bt_address" property="btAddress" jdbcType="VARCHAR" />
+    <result column="bt_vehicle" property="btVehicle" jdbcType="VARCHAR" />
+    <result column="bt_ask_begin_time" property="btAskBeginTime" jdbcType="VARCHAR" />
+    <result column="bt_ask_end_time" property="btAskEndTime" jdbcType="VARCHAR" />
+    <result column="bt_ask_sustain" property="btAskSustain" jdbcType="VARCHAR" />
+    <result column="bt_ask_reason" property="btAskReason" jdbcType="VARCHAR" />
+    <result column="bt_ask_staff_user_id" property="btAskStaffUserId" jdbcType="VARCHAR" />
+    <result column="bt_ask_staff_depart_id" property="btAskStaffDepartId" jdbcType="VARCHAR" />
+    <result column="bt_trip" property="btTrip" jdbcType="VARCHAR" />
+    <result column="bt_status" property="btStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    bt_sequence_no, bt_approve_no, bt_title, bt_approve_state, bt_approve_result, bt_approve_begin, 
+    bt_approve_end, bt_ask_staff_id, bt_ask_staff_name, bt_ask_staff_depart, bt_history_approve_name, 
+    bt_approve_record, bt_now_approve_name, bt_cost, bt_detail, bt_aim, bt_start_city, 
+    bt_address, bt_vehicle, bt_ask_begin_time, bt_ask_end_time, bt_ask_sustain, bt_ask_reason, 
+    bt_ask_staff_user_id, bt_ask_staff_depart_id, bt_trip, bt_status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.model.BusinessTripExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from business_trip
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from business_trip
+    where bt_sequence_no = #{btSequenceNo,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from business_trip
+    where bt_sequence_no = #{btSequenceNo,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.model.BusinessTrip" >
+    insert into business_trip (bt_sequence_no, bt_approve_no, bt_title, 
+      bt_approve_state, bt_approve_result, bt_approve_begin, 
+      bt_approve_end, bt_ask_staff_id, bt_ask_staff_name, 
+      bt_ask_staff_depart, bt_history_approve_name, 
+      bt_approve_record, bt_now_approve_name, bt_cost, 
+      bt_detail, bt_aim, bt_start_city, 
+      bt_address, bt_vehicle, bt_ask_begin_time, 
+      bt_ask_end_time, bt_ask_sustain, bt_ask_reason, 
+      bt_ask_staff_user_id, bt_ask_staff_depart_id, bt_trip, 
+      bt_status)
+    values (#{btSequenceNo,jdbcType=INTEGER}, #{btApproveNo,jdbcType=VARCHAR}, #{btTitle,jdbcType=VARCHAR}, 
+      #{btApproveState,jdbcType=VARCHAR}, #{btApproveResult,jdbcType=VARCHAR}, #{btApproveBegin,jdbcType=VARCHAR}, 
+      #{btApproveEnd,jdbcType=VARCHAR}, #{btAskStaffId,jdbcType=VARCHAR}, #{btAskStaffName,jdbcType=VARCHAR}, 
+      #{btAskStaffDepart,jdbcType=VARCHAR}, #{btHistoryApproveName,jdbcType=VARCHAR}, 
+      #{btApproveRecord,jdbcType=VARCHAR}, #{btNowApproveName,jdbcType=VARCHAR}, #{btCost,jdbcType=VARCHAR}, 
+      #{btDetail,jdbcType=VARCHAR}, #{btAim,jdbcType=VARCHAR}, #{btStartCity,jdbcType=VARCHAR}, 
+      #{btAddress,jdbcType=VARCHAR}, #{btVehicle,jdbcType=VARCHAR}, #{btAskBeginTime,jdbcType=VARCHAR}, 
+      #{btAskEndTime,jdbcType=VARCHAR}, #{btAskSustain,jdbcType=VARCHAR}, #{btAskReason,jdbcType=VARCHAR}, 
+      #{btAskStaffUserId,jdbcType=VARCHAR}, #{btAskStaffDepartId,jdbcType=VARCHAR}, #{btTrip,jdbcType=VARCHAR}, 
+      #{btStatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.BusinessTrip" >
+    insert into business_trip
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="btSequenceNo != null" >
+        bt_sequence_no,
+      </if>
+      <if test="btApproveNo != null" >
+        bt_approve_no,
+      </if>
+      <if test="btTitle != null" >
+        bt_title,
+      </if>
+      <if test="btApproveState != null" >
+        bt_approve_state,
+      </if>
+      <if test="btApproveResult != null" >
+        bt_approve_result,
+      </if>
+      <if test="btApproveBegin != null" >
+        bt_approve_begin,
+      </if>
+      <if test="btApproveEnd != null" >
+        bt_approve_end,
+      </if>
+      <if test="btAskStaffId != null" >
+        bt_ask_staff_id,
+      </if>
+      <if test="btAskStaffName != null" >
+        bt_ask_staff_name,
+      </if>
+      <if test="btAskStaffDepart != null" >
+        bt_ask_staff_depart,
+      </if>
+      <if test="btHistoryApproveName != null" >
+        bt_history_approve_name,
+      </if>
+      <if test="btApproveRecord != null" >
+        bt_approve_record,
+      </if>
+      <if test="btNowApproveName != null" >
+        bt_now_approve_name,
+      </if>
+      <if test="btCost != null" >
+        bt_cost,
+      </if>
+      <if test="btDetail != null" >
+        bt_detail,
+      </if>
+      <if test="btAim != null" >
+        bt_aim,
+      </if>
+      <if test="btStartCity != null" >
+        bt_start_city,
+      </if>
+      <if test="btAddress != null" >
+        bt_address,
+      </if>
+      <if test="btVehicle != null" >
+        bt_vehicle,
+      </if>
+      <if test="btAskBeginTime != null" >
+        bt_ask_begin_time,
+      </if>
+      <if test="btAskEndTime != null" >
+        bt_ask_end_time,
+      </if>
+      <if test="btAskSustain != null" >
+        bt_ask_sustain,
+      </if>
+      <if test="btAskReason != null" >
+        bt_ask_reason,
+      </if>
+      <if test="btAskStaffUserId != null" >
+        bt_ask_staff_user_id,
+      </if>
+      <if test="btAskStaffDepartId != null" >
+        bt_ask_staff_depart_id,
+      </if>
+      <if test="btTrip != null" >
+        bt_trip,
+      </if>
+      <if test="btStatus != null" >
+        bt_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="btSequenceNo != null" >
+        #{btSequenceNo,jdbcType=INTEGER},
+      </if>
+      <if test="btApproveNo != null" >
+        #{btApproveNo,jdbcType=VARCHAR},
+      </if>
+      <if test="btTitle != null" >
+        #{btTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="btApproveState != null" >
+        #{btApproveState,jdbcType=VARCHAR},
+      </if>
+      <if test="btApproveResult != null" >
+        #{btApproveResult,jdbcType=VARCHAR},
+      </if>
+      <if test="btApproveBegin != null" >
+        #{btApproveBegin,jdbcType=VARCHAR},
+      </if>
+      <if test="btApproveEnd != null" >
+        #{btApproveEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="btAskStaffId != null" >
+        #{btAskStaffId,jdbcType=VARCHAR},
+      </if>
+      <if test="btAskStaffName != null" >
+        #{btAskStaffName,jdbcType=VARCHAR},
+      </if>
+      <if test="btAskStaffDepart != null" >
+        #{btAskStaffDepart,jdbcType=VARCHAR},
+      </if>
+      <if test="btHistoryApproveName != null" >
+        #{btHistoryApproveName,jdbcType=VARCHAR},
+      </if>
+      <if test="btApproveRecord != null" >
+        #{btApproveRecord,jdbcType=VARCHAR},
+      </if>
+      <if test="btNowApproveName != null" >
+        #{btNowApproveName,jdbcType=VARCHAR},
+      </if>
+      <if test="btCost != null" >
+        #{btCost,jdbcType=VARCHAR},
+      </if>
+      <if test="btDetail != null" >
+        #{btDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="btAim != null" >
+        #{btAim,jdbcType=VARCHAR},
+      </if>
+      <if test="btStartCity != null" >
+        #{btStartCity,jdbcType=VARCHAR},
+      </if>
+      <if test="btAddress != null" >
+        #{btAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="btVehicle != null" >
+        #{btVehicle,jdbcType=VARCHAR},
+      </if>
+      <if test="btAskBeginTime != null" >
+        #{btAskBeginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="btAskEndTime != null" >
+        #{btAskEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="btAskSustain != null" >
+        #{btAskSustain,jdbcType=VARCHAR},
+      </if>
+      <if test="btAskReason != null" >
+        #{btAskReason,jdbcType=VARCHAR},
+      </if>
+      <if test="btAskStaffUserId != null" >
+        #{btAskStaffUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="btAskStaffDepartId != null" >
+        #{btAskStaffDepartId,jdbcType=VARCHAR},
+      </if>
+      <if test="btTrip != null" >
+        #{btTrip,jdbcType=VARCHAR},
+      </if>
+      <if test="btStatus != null" >
+        #{btStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.BusinessTrip" >
+    update business_trip
+    <set >
+      <if test="btApproveNo != null" >
+        bt_approve_no = #{btApproveNo,jdbcType=VARCHAR},
+      </if>
+      <if test="btTitle != null" >
+        bt_title = #{btTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="btApproveState != null" >
+        bt_approve_state = #{btApproveState,jdbcType=VARCHAR},
+      </if>
+      <if test="btApproveResult != null" >
+        bt_approve_result = #{btApproveResult,jdbcType=VARCHAR},
+      </if>
+      <if test="btApproveBegin != null" >
+        bt_approve_begin = #{btApproveBegin,jdbcType=VARCHAR},
+      </if>
+      <if test="btApproveEnd != null" >
+        bt_approve_end = #{btApproveEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="btAskStaffId != null" >
+        bt_ask_staff_id = #{btAskStaffId,jdbcType=VARCHAR},
+      </if>
+      <if test="btAskStaffName != null" >
+        bt_ask_staff_name = #{btAskStaffName,jdbcType=VARCHAR},
+      </if>
+      <if test="btAskStaffDepart != null" >
+        bt_ask_staff_depart = #{btAskStaffDepart,jdbcType=VARCHAR},
+      </if>
+      <if test="btHistoryApproveName != null" >
+        bt_history_approve_name = #{btHistoryApproveName,jdbcType=VARCHAR},
+      </if>
+      <if test="btApproveRecord != null" >
+        bt_approve_record = #{btApproveRecord,jdbcType=VARCHAR},
+      </if>
+      <if test="btNowApproveName != null" >
+        bt_now_approve_name = #{btNowApproveName,jdbcType=VARCHAR},
+      </if>
+      <if test="btCost != null" >
+        bt_cost = #{btCost,jdbcType=VARCHAR},
+      </if>
+      <if test="btDetail != null" >
+        bt_detail = #{btDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="btAim != null" >
+        bt_aim = #{btAim,jdbcType=VARCHAR},
+      </if>
+      <if test="btStartCity != null" >
+        bt_start_city = #{btStartCity,jdbcType=VARCHAR},
+      </if>
+      <if test="btAddress != null" >
+        bt_address = #{btAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="btVehicle != null" >
+        bt_vehicle = #{btVehicle,jdbcType=VARCHAR},
+      </if>
+      <if test="btAskBeginTime != null" >
+        bt_ask_begin_time = #{btAskBeginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="btAskEndTime != null" >
+        bt_ask_end_time = #{btAskEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="btAskSustain != null" >
+        bt_ask_sustain = #{btAskSustain,jdbcType=VARCHAR},
+      </if>
+      <if test="btAskReason != null" >
+        bt_ask_reason = #{btAskReason,jdbcType=VARCHAR},
+      </if>
+      <if test="btAskStaffUserId != null" >
+        bt_ask_staff_user_id = #{btAskStaffUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="btAskStaffDepartId != null" >
+        bt_ask_staff_depart_id = #{btAskStaffDepartId,jdbcType=VARCHAR},
+      </if>
+      <if test="btTrip != null" >
+        bt_trip = #{btTrip,jdbcType=VARCHAR},
+      </if>
+      <if test="btStatus != null" >
+        bt_status = #{btStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bt_sequence_no = #{btSequenceNo,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.BusinessTrip" >
+    update business_trip
+    set bt_approve_no = #{btApproveNo,jdbcType=VARCHAR},
+      bt_title = #{btTitle,jdbcType=VARCHAR},
+      bt_approve_state = #{btApproveState,jdbcType=VARCHAR},
+      bt_approve_result = #{btApproveResult,jdbcType=VARCHAR},
+      bt_approve_begin = #{btApproveBegin,jdbcType=VARCHAR},
+      bt_approve_end = #{btApproveEnd,jdbcType=VARCHAR},
+      bt_ask_staff_id = #{btAskStaffId,jdbcType=VARCHAR},
+      bt_ask_staff_name = #{btAskStaffName,jdbcType=VARCHAR},
+      bt_ask_staff_depart = #{btAskStaffDepart,jdbcType=VARCHAR},
+      bt_history_approve_name = #{btHistoryApproveName,jdbcType=VARCHAR},
+      bt_approve_record = #{btApproveRecord,jdbcType=VARCHAR},
+      bt_now_approve_name = #{btNowApproveName,jdbcType=VARCHAR},
+      bt_cost = #{btCost,jdbcType=VARCHAR},
+      bt_detail = #{btDetail,jdbcType=VARCHAR},
+      bt_aim = #{btAim,jdbcType=VARCHAR},
+      bt_start_city = #{btStartCity,jdbcType=VARCHAR},
+      bt_address = #{btAddress,jdbcType=VARCHAR},
+      bt_vehicle = #{btVehicle,jdbcType=VARCHAR},
+      bt_ask_begin_time = #{btAskBeginTime,jdbcType=VARCHAR},
+      bt_ask_end_time = #{btAskEndTime,jdbcType=VARCHAR},
+      bt_ask_sustain = #{btAskSustain,jdbcType=VARCHAR},
+      bt_ask_reason = #{btAskReason,jdbcType=VARCHAR},
+      bt_ask_staff_user_id = #{btAskStaffUserId,jdbcType=VARCHAR},
+      bt_ask_staff_depart_id = #{btAskStaffDepartId,jdbcType=VARCHAR},
+      bt_trip = #{btTrip,jdbcType=VARCHAR},
+      bt_status = #{btStatus,jdbcType=VARCHAR}
+    where bt_sequence_no = #{btSequenceNo,jdbcType=INTEGER}
+  </update>
+</mapper>

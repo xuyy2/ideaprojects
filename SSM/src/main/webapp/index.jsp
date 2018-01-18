@@ -2,16 +2,31 @@
 <% String appPath = request.getContextPath(); %>
 <html>
 <head>
-    <meta charset="utf-8">
+    <title>易商用户管理系统</title>
+
 </head>
+
 <body>
-<h2>图书管理系统</h2>
-简单的查询、删除等基础功能
-<br />
-日期：2017-05-01 22:25:37
-<br />
-网站：<a href="hisen.me" target="_blank">hisen.me</a>
-<br /><br /><br /><br />
-图书系统：<a href="<%=appPath%>/book/list">点击前往</a>
+    <div>
+        <h1 style="color:red">登录</h1>
+        <form id="indexform" name="indexForm" action="logincheck.jsp" method="post">
+            <table border="0">
+                <tr>
+                    <td>账号：</td>
+                    <td><input type="text" name="username"></td>
+                </tr>
+                <tr>
+                    <td>密码：</td>
+                    <td><input type="password" name="password">
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <input type="submit" value="登录" style="color:#BC8F8F">
+        </form>
+        <form action="zhuce.jsp">
+            <input type="submit" value="注册" style="color:#BC8F8F">
+        </form>
+    </div>
 </body>
 </html>
