@@ -30,19 +30,23 @@
                 </tr>
                 <tr>
                     <td>用户名：</td>
-                    <td><input type="text" name="username" />
+                    <td>
+                        <input type="text" name="username" />
                     </td>
                 </tr>
                 <tr>
                     <td>密码：</td>
-                    <td><input type="password" name="password" />
+                    <td>
+                        <input type="password" name="password" />
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input type="submit" value="登录" /> <a href="register.jsp">注册</a>
+                    <td colspan="2">
+                        <input type="submit" value="登录" /> <a href="register.jsp">注册</a>
                     </td>
                 </tr>
             </table>
         </form>
     </body>
+</html>
 </html>
