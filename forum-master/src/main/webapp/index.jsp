@@ -1,1 +1,1 @@
-<jsp:forward page="toIndex.do" />
+<jsp:forward page="WEB-INF/view/index.jsp" />

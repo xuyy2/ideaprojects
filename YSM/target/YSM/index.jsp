@@ -26,7 +26,7 @@
         <form action="login_action.jsp" method="post">
             <table>
                 <tr>
-                    <td colspan="2">登录窗口</td>
+                    <th colspan="2">登录窗口</th>
                 </tr>
                 <tr>
                     <td>用户名：</td>
@@ -39,7 +39,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input type="submit" value="登录" /> <a href="register.jsp">注册</a>
+                    <td colspan="2"><input type="submit" value="登录" /> <a href="WEB-INF/jsp/register.jsp">注册</a>
                     </td>
                 </tr>
             </table>
